@@ -333,3 +333,29 @@ read-only; all LLM-bound data is synthetic.
 ## Time budget
 
 Tracked in `time_log.csv` (7-hour assignment budget).
+
+---
+
+## AI-assistance disclosure
+
+Built with AI coding assistants; code is original to this project and explainable on
+request.
+
+**Development process:**
+
+| Phase | Tool | Models |
+|---|---|---|
+| Solutioning (design, architecture, docs) | AI assistant | DeepSeek V4 Pro, DeepSeek V4 Flash |
+| Development (implementation, tests, debugging) | AI assistant | DeepSeek V4 Flash, MiMo-2.5 Pro |
+| Harness (orchestration, agent framework) | CommandCode | — |
+
+**Runtime agent models (in the demo):**
+
+| Purpose | Model | Endpoint |
+|---|---|---|
+| Chat / reasoning | `deepseek/deepseek-v4-flash-0731` | OpenRouter |
+| Embeddings | `voyageai/voyage-4-lite` (1024-dim) | OpenRouter `/embeddings` |
+| Reranking | `voyageai/rerank-2.5-lite` | OpenRouter (togglable) |
+| Prompt moderation | `meta-llama/llama-guard-4-12b` | OpenRouter (togglable) |
+
+All runtime models are configurable via `.env` (see [Configuration](#configuration)).
