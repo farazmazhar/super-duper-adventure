@@ -262,8 +262,7 @@ but not yet implemented. The deterministic metrics provide the core quality sign
 judge would add subjective scoring on top.
 
 **Known issues:** the evaluator is implemented and runs, but has known issues that are
-being triaged. The design (golden-set schema, metric definitions, two-layer judge) is
-captured in the internal docs and ready to extend.
+being triaged.
 
 ### 7. Frontend — `apps/frontend/`
 
