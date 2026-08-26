@@ -40,6 +40,9 @@ chart, Behind-the-scenes trace, exec dashboard). Click the thumbnail to play.
 
 [![Demo walkthrough](demo/demo-poster.jpg)](demo/demo.webm)
 
+> If the video doesn't play in your browser, [download demo.webm](demo/demo.webm)
+> and open it locally (VLC, the browser, etc.).
+
 **Test the agent without the UI** (same graph + MCP + guardrails, terminal output):
 
 ```bash
