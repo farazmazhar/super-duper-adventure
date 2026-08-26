@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Workspace — Customer Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/chat.css">
+<script>
+  window.PAGE = "chat";
+</script>
+</head>
+<body>
+<!-- TopAppBar -->
+<header class="appbar">
+  <div class="brand">
+    <span class="material-symbols-outlined">smart_toy</span>
+    <span class="brand-title">Agent Workspace</span>
+  </div>
+  <nav class="appbar-links">
+    <a href="/" class="active">💬 Chat</a>
+    <a href="/dashboard">📊 Dashboard</a>
+    <a href="/customer/CUST-0001">👤 Customer</a>
+    <a href="/admin">⚙️ Admin</a>
+  </nav>
+</header>
+
+<!-- Main Layout -->
+<div class="layout">
+  <!-- SideNavBar (Left) -->
+  <aside class="sidebar">
+    <div class="sidebar-scroll">
+      <button id="new-session" class="new-chat">
+        <span class="material-symbols-outlined">add_comment</span>
+        <span>New Chat</span>
+      </button>
+
+      <div class="section-label">Recent Sessions</div>
+      <div class="session-list" id="sessions-list">
+        <!-- populated from localStorage on load -->
+      </div>
+    </div>
+  </aside>
+
+  <!-- Center Workspace (Chat) -->
+  <main class="workspace">
+    <div id="messages" class="messages">
+      <div class="welcome">
+        <div class="context-chip"><span class="dot"></span> Customer Intelligence Analyst Ready</div>
+        <div class="welcome-title">How can I help?</div>
+        <div class="welcome-sub">Ask about feedback themes, customer risk, revenue at risk, or any customer.</div>
+        <div id="suggestions" class="suggestions">
+          <button class="chip" data-q="What are the top feedback themes?">Top feedback themes</button>
+          <button class="chip" data-q="Which customers need attention?">Which customers need attention?</button>
+          <button class="chip" data-q="How much revenue is at risk?">Revenue at risk</button>
+          <button class="chip" data-q="What is happening with customer CUST-0001?">CUST-0001</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer-wrap">
+      <div class="toggles-row">
+        <label class="toggle-row">
+          <input type="checkbox" id="rerank-toggle" checked>
+          <span class="toggle-track"></span>
+          <span>Rerank Retrieval</span>
+        </label>
+        <label class="toggle-row">
+          <input type="checkbox" id="moderation-toggle" checked>
+          <span class="toggle-track"></span>
+          <span>Moderation Pre-check</span>
+        </label>
+      </div>
+      <form id="composer" class="composer">
+        <textarea id="question-input" rows="1" placeholder="Message agent or type '/' for commands..." autocomplete="off"></textarea>
+        <div class="composer-bar">
+          <div class="composer-actions">
+            <button type="button" title="Attach File"><span class="material-symbols-outlined">attach_file</span></button>
+            <button type="button" title="Select Model"><span class="material-symbols-outlined">psychology_alt</span></button>
+          </div>
+          <button type="submit" class="send" title="Send">
+            <span>Send</span>
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </div>
+      </form>
+      <div class="composer-note">Agents can make mistakes. Verify critical code.</div>
+    </div>
+  </main>
+
+  <!-- Right Sidebar (Trace Panel) -->
+  <aside class="trace">
+    <div class="trace-head">
+      <div class="trace-title"><span class="material-symbols-outlined">terminal</span> Agent Trace</div>
+      <span class="live-badge" id="trace-status">Idle</span>
+    </div>
+    <div class="trace-body" id="bts-content">
+      <p class="muted">Run a question to see the agent's trace.</p>
+    </div>
+    <div class="trace-foot" id="trace-stats"></div>
+  </aside>
+</div>
+
+<script src="/static/app.js" defer></script>
+</body>
+</html>

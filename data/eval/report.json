@@ -1,0 +1,1800 @@
+{
+  "evaluated_at": "2026-08-26T22:39:18.832169",
+  "judge_enabled": false,
+  "overall": {
+    "questions": 3,
+    "passed": 1,
+    "failed": 2,
+    "pass_rate": 0.333,
+    "metric_ok": 30,
+    "metric_total": 33,
+    "metric_rate": 0.909
+  },
+  "results": [
+    {
+      "question_id": "eval-001",
+      "passed_metrics": 11,
+      "total_metrics": 11,
+      "passed": true,
+      "metrics": {
+        "routing": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "customer",
+            "actual": "customer"
+          }
+        },
+        "intent": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "customer_query",
+            "actual": "customer_query"
+          }
+        },
+        "entities": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "found": [
+              "customer_ids"
+            ],
+            "missing": [],
+            "entities": {
+              "customer_ids": [
+                "CUST-0001"
+              ],
+              "ticket_ids": [],
+              "feedback_ids": [],
+              "segment": null,
+              "plan": null,
+              "date_hints": [],
+              "customer_name_hint": null
+            }
+          }
+        },
+        "tools": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": [
+              "get_customer_profile",
+              "get_customer_tickets",
+              "get_usage_change"
+            ],
+            "called": [
+              "get_catalog",
+              "get_customer_feedback",
+              "get_customer_profile",
+              "get_customer_tickets",
+              "get_subscription_events",
+              "get_usage_change",
+              "get_usage_trend"
+            ],
+            "missing": []
+          }
+        },
+        "retrieval": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "no retrieval expected"
+          }
+        },
+        "citations": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "uncited": []
+          }
+        },
+        "render": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "table",
+            "actual": "table"
+          }
+        },
+        "recommendations": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": false,
+            "actual": true
+          }
+        },
+        "prioritization": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": false,
+            "actual": false,
+            "headings": []
+          }
+        },
+        "irrelevant": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "not an irrelevant question"
+          }
+        },
+        "confidence": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected_low": false,
+            "actual": "high"
+          }
+        }
+      },
+      "question": "Who is CUST-0001 and what is their account status?",
+      "judge": {
+        "skipped": true
+      },
+      "trace": {
+        "trace_id": "f011a99f9e17",
+        "question": "Who is CUST-0001 and what is their account status?",
+        "spans": [
+          {
+            "name": "classify",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765822.4819558,
+            "latency_ms": 0.17,
+            "metadata": {
+              "intent": "customer_query",
+              "entities": {
+                "customer_ids": [
+                  "CUST-0001"
+                ],
+                "ticket_ids": [],
+                "feedback_ids": [],
+                "segment": null,
+                "plan": null,
+                "date_hints": [],
+                "customer_name_hint": null
+              }
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "route",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765822.4824235,
+            "latency_ms": 0.0,
+            "metadata": {
+              "intent": "customer_query",
+              "routed_node": "customer"
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "node:customer",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765822.4870312,
+            "latency_ms": 414.53,
+            "metadata": {
+              "tools": [
+                "get_customer_profile",
+                "get_customer_tickets",
+                "get_customer_feedback",
+                "get_usage_change",
+                "get_subscription_events",
+                "get_usage_trend",
+                "get_catalog"
+              ]
+            },
+            "result": {
+              "get_customer_profile": {
+                "customer_id": "CUST-0001",
+                "customer_name": "VertexPath A",
+                "customer_segment": "Mid-Market",
+                "country": "Singapore",
+                "subscription_plan": "Business",
+                "monthly_revenue": 3198.81,
+                "account_created_at": "2023-05-17",
+                "account_status": "canceled",
+                "revenue_imputed": false,
+                "churn_proxy": true,
+                "ticket_count": 1,
+                "tickets_open": 0,
+                "tickets_urgent": 0,
+                "average_resolution_time_hours": 21.0,
+                "average_satisfaction_score": 4.0,
+                "sessions_last_4_weeks": 428,
+                "sessions_previous_4_weeks": 1667,
+                "sessions_change_percent": -74.3251349730054,
+                "errors_total": 91,
+                "feedback_count": 1,
+                "average_rating": 3.0,
+                "cancellations": 1,
+                "downgrades": 0,
+                "upgrades": 0,
+                "renewals": 0,
+                "revenue_change_sum": -1450.0,
+                "last_event_date": "2026-07-13",
+                "last_event_type": "cancellation"
+              },
+              "get_customer_tickets": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "ticket_id": "TCK-00001",
+                    "created_at": "2026-05-28T00:00:00",
+                    "subject": "General inquiry",
+                    "category": "general_question",
+                    "priority": "low",
+                    "status": "resolved",
+                    "resolution_time_hours": 21.0,
+                    "satisfaction_score": 4.0
+                  }
+                ]
+              },
+              "get_customer_feedback": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "feedback_id": "FDB-00001",
+                    "created_at": "2026-04-29T00:00:00",
+                    "feedback_text": "Mixed feelings about search, some parts are great, others need work.",
+                    "feedback_source": "support_chat",
+                    "rating": 3.0,
+                    "theme": "search",
+                    "sentiment": "positive"
+                  }
+                ]
+              },
+              "get_usage_change": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "customer_id": "CUST-0001",
+                    "customer_name": "VertexPath A",
+                    "customer_segment": "Mid-Market",
+                    "sessions_last_4_weeks": 428,
+                    "sessions_previous_4_weeks": 1667,
+                    "sessions_change_percent": -74.3251349730054,
+                    "active_users_last_4_weeks": 65,
+                    "active_users_previous_4_weeks": 100243,
+                    "active_users_change_percent": -99.93515756711192,
+                    "errors_total": 91
+                  }
+                ]
+              },
+              "get_subscription_events": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "event_date": "2026-07-13",
+                    "event_type": "cancellation",
+                    "previous_plan": "Business",
+                    "new_plan": "Free",
+                    "revenue_change": -1450.0
+                  }
+                ]
+              },
+              "get_usage_trend": {
+                "row_count": 50,
+                "sample": [
+                  {
+                    "date": "2026-05-26",
+                    "active_users": 10,
+                    "sessions": 71,
+                    "errors": 1,
+                    "feature_usage": "search",
+                    "average_session_duration": 8.1
+                  },
+                  {
+                    "date": "2026-05-27",
+                    "active_users": 11,
+                    "sessions": 69,
+                    "errors": 3,
+                    "feature_usage": "exports",
+                    "average_session_duration": 9.5
+                  },
+                  {
+                    "date": "2026-05-28",
+                    "active_users": 12,
+                    "sessions": 66,
+                    "errors": 0,
+                    "feature_usage": "search",
+                    "average_session_duration": 8.4
+                  },
+                  {
+                    "date": "2026-05-29",
+                    "active_users": 9,
+                    "sessions": 68,
+                    "errors": 1,
+                    "feature_usage": "exports",
+                    "average_session_duration": 8.8
+                  },
+                  {
+                    "date": "2026-05-30",
+                    "active_users": 10,
+                    "sessions": 57,
+                    "errors": 3,
+                    "feature_usage": "api",
+                    "average_session_duration": 5.2
+                  }
+                ]
+              },
+              "get_catalog": {
+                "entities": 7,
+                "dimensions": 15
+              }
+            },
+            "parent_span_id": null
+          },
+          {
+            "name": "reason",
+            "kind": "llm",
+            "status": "ok",
+            "started_at": 1787765822.9020674,
+            "latency_ms": 27819.08,
+            "metadata": {
+              "used_llm": true,
+              "input_tokens": 7388,
+              "output_tokens": 1140,
+              "cache_read_tokens": 0,
+              "cache_write_tokens": 0,
+              "cost": null,
+              "requests": 2,
+              "tool_calls": 0
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "answer",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765850.7219977,
+            "latency_ms": 0.0,
+            "metadata": {
+              "summary": "CUST-0001 is VertexPath (Mid-Market, Business), whose account status is canceled following a 2026-07-13 Business->Free d"
+            },
+            "result": null,
+            "parent_span_id": null
+          }
+        ],
+        "events": [
+          {
+            "event": "answer_ready",
+            "ts": 1787765850.7220013,
+            "payload": {
+              "summary": "CUST-0001 is VertexPath (Mid-Market, Business), whose account status is canceled following a 2026-07-13 Business->Free d"
+            }
+          }
+        ]
+      },
+      "answer": {
+        "facts": [
+          {
+            "heading": "Identity & status",
+            "content": "CUST-0001 is VertexPath (Mid-Market segment, Business plan, monthly revenue $3,198.81). Account status is canceled.",
+            "citations": [
+              "CUST-0001"
+            ]
+          },
+          {
+            "heading": "Cancellation event",
+            "content": "The account was canceled on 2026-07-13 via a Business->Free plan change with a revenue change of -$1,450.",
+            "citations": [
+              "CUST-0001",
+              "2026-07-13"
+            ]
+          },
+          {
+            "heading": "Usage decline",
+            "content": "Sessions last 4 weeks = 428 vs. 1,667 prior (-74.33%); daily active users fell from ~10-12 in late May to ~1 by early July.",
+            "citations": [
+              "CUST-0001"
+            ]
+          }
+        ],
+        "interpretation": [
+          {
+            "heading": "Churned / at-risk account",
+            "content": "VertexPath shows a steady ~7-week adoption collapse (daily sessions ~70 down to ~8, active users ~10 to 1), culminating in cancellation on 2026-07-13. An earlier 3/5 search feedback (FDB-00001) hints at product areas that may have contributed, though no escalation ticket in the context explains the cancellation.",
+            "citations": [
+              "FDB-00001",
+              "CUST-0001"
+            ]
+          }
+        ],
+        "recommendation": [
+          {
+            "heading": "Win-back outreach",
+            "content": "Add VertexPath to a win-back list; given the clear pre-churn usage collapse, run a churn-risk playbook (save offer / product-health check).",
+            "citations": [
+              "CUST-0001"
+            ]
+          },
+          {
+            "heading": "Prevent repeat churn",
+            "content": "Review whether other Mid-Market Business customers share the contraction pattern (sessions_change_pct < -50%) to catch at-risk accounts earlier.",
+            "citations": [
+              "CUST-0001"
+            ]
+          }
+        ],
+        "other_sections": [],
+        "confidence": "high",
+        "render_hint": {
+          "kind": "table",
+          "payload": {
+            "kind": "table",
+            "data": [
+              {
+                "ticket_id": "TCK-00001",
+                "created_at": "2026-05-28",
+                "category": "general_question",
+                "priority": "low",
+                "status": "resolved"
+              }
+            ],
+            "spec": {
+              "title": "Recent tickets"
+            }
+          }
+        },
+        "summary": "CUST-0001 is VertexPath (Mid-Market, Business), whose account status is canceled following a 2026-07-13 Business->Free downgrade and a -74% session decline."
+      }
+    },
+    {
+      "question_id": "eval-002",
+      "passed_metrics": 10,
+      "total_metrics": 11,
+      "passed": false,
+      "metrics": {
+        "routing": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "customer",
+            "actual": "customer"
+          }
+        },
+        "intent": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "customer_query",
+            "actual": "customer_query"
+          }
+        },
+        "entities": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "found": [
+              "customer_ids"
+            ],
+            "missing": [],
+            "entities": {
+              "customer_ids": [
+                "CUST-0003"
+              ],
+              "ticket_ids": [],
+              "feedback_ids": [],
+              "segment": null,
+              "plan": null,
+              "date_hints": [],
+              "customer_name_hint": null
+            }
+          }
+        },
+        "tools": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": [
+              "get_customer_profile",
+              "get_usage_change"
+            ],
+            "called": [
+              "get_catalog",
+              "get_customer_feedback",
+              "get_customer_profile",
+              "get_customer_tickets",
+              "get_subscription_events",
+              "get_usage_change",
+              "get_usage_trend"
+            ],
+            "missing": []
+          }
+        },
+        "retrieval": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "no retrieval expected"
+          }
+        },
+        "citations": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "uncited": []
+          }
+        },
+        "render": {
+          "passed": false,
+          "score": 0.0,
+          "detail": {
+            "expected": "table",
+            "actual": "cards"
+          }
+        },
+        "recommendations": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": false,
+            "actual": true
+          }
+        },
+        "prioritization": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": false,
+            "actual": false,
+            "headings": []
+          }
+        },
+        "irrelevant": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "not an irrelevant question"
+          }
+        },
+        "confidence": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected_low": false,
+            "actual": "high"
+          }
+        }
+      },
+      "question": "Show me everything about customer CUST-0003",
+      "judge": {
+        "skipped": true
+      },
+      "trace": {
+        "trace_id": "20890f761ae4",
+        "question": "Show me everything about customer CUST-0003",
+        "spans": [
+          {
+            "name": "classify",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765850.7230928,
+            "latency_ms": 0.03,
+            "metadata": {
+              "intent": "customer_query",
+              "entities": {
+                "customer_ids": [
+                  "CUST-0003"
+                ],
+                "ticket_ids": [],
+                "feedback_ids": [],
+                "segment": null,
+                "plan": null,
+                "date_hints": [],
+                "customer_name_hint": null
+              }
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "route",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765850.7233553,
+            "latency_ms": 0.0,
+            "metadata": {
+              "intent": "customer_query",
+              "routed_node": "customer"
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "node:customer",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765850.7253978,
+            "latency_ms": 84.81,
+            "metadata": {
+              "tools": [
+                "get_customer_profile",
+                "get_customer_tickets",
+                "get_customer_feedback",
+                "get_usage_change",
+                "get_subscription_events",
+                "get_usage_trend",
+                "get_catalog"
+              ]
+            },
+            "result": {
+              "get_customer_profile": {
+                "customer_id": "CUST-0003",
+                "customer_name": "LumenDynamics C",
+                "customer_segment": "SMB",
+                "country": null,
+                "subscription_plan": "Team",
+                "monthly_revenue": 354.31,
+                "account_created_at": "2025-04-21",
+                "account_status": "canceled",
+                "revenue_imputed": false,
+                "churn_proxy": true,
+                "ticket_count": 0,
+                "tickets_open": 0,
+                "tickets_urgent": 0,
+                "average_resolution_time_hours": null,
+                "average_satisfaction_score": null,
+                "sessions_last_4_weeks": 132,
+                "sessions_previous_4_weeks": 522,
+                "sessions_change_percent": -74.71264367816092,
+                "errors_total": 104,
+                "feedback_count": 0,
+                "average_rating": null,
+                "cancellations": 1,
+                "downgrades": 0,
+                "upgrades": 0,
+                "renewals": 0,
+                "revenue_change_sum": -210.0,
+                "last_event_date": "2026-07-10",
+                "last_event_type": "cancellation"
+              },
+              "get_customer_tickets": {
+                "row_count": 0,
+                "sample": []
+              },
+              "get_customer_feedback": {
+                "row_count": 0,
+                "sample": []
+              },
+              "get_usage_change": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "customer_id": "CUST-0003",
+                    "customer_name": "LumenDynamics C",
+                    "customer_segment": "SMB",
+                    "sessions_last_4_weeks": 132,
+                    "sessions_previous_4_weeks": 522,
+                    "sessions_change_percent": -74.71264367816092,
+                    "active_users_last_4_weeks": 20,
+                    "active_users_previous_4_weeks": 97,
+                    "active_users_change_percent": -79.38144329896907,
+                    "errors_total": 104
+                  }
+                ]
+              },
+              "get_subscription_events": {
+                "row_count": 1,
+                "sample": [
+                  {
+                    "event_date": "2026-07-10",
+                    "event_type": "cancellation",
+                    "previous_plan": "Team",
+                    "new_plan": "Free",
+                    "revenue_change": -210.0
+                  }
+                ]
+              },
+              "get_usage_trend": {
+                "row_count": 50,
+                "sample": [
+                  {
+                    "date": "2026-05-26",
+                    "active_users": 4,
+                    "sessions": 20,
+                    "errors": 1,
+                    "feature_usage": "dashboards",
+                    "average_session_duration": 8.4
+                  },
+                  {
+                    "date": "2026-05-27",
+                    "active_users": 4,
+                    "sessions": 26,
+                    "errors": 3,
+                    "feature_usage": "search",
+                    "average_session_duration": 7.1
+                  },
+                  {
+                    "date": "2026-05-28",
+                    "active_users": 4,
+                    "sessions": 18,
+                    "errors": 1,
+                    "feature_usage": "reports",
+                    "average_session_duration": 11.0
+                  },
+                  {
+                    "date": "2026-05-29",
+                    "active_users": 4,
+                    "sessions": 20,
+                    "errors": 2,
+                    "feature_usage": "collaboration",
+                    "average_session_duration": 8.8
+                  },
+                  {
+                    "date": "2026-05-30",
+                    "active_users": 4,
+                    "sessions": 20,
+                    "errors": 1,
+                    "feature_usage": "reports",
+                    "average_session_duration": 7.7
+                  }
+                ]
+              },
+              "get_catalog": {
+                "entities": 7,
+                "dimensions": 15
+              }
+            },
+            "parent_span_id": null
+          },
+          {
+            "name": "reason",
+            "kind": "llm",
+            "status": "ok",
+            "started_at": 1787765850.8108344,
+            "latency_ms": 80094.49,
+            "metadata": {
+              "used_llm": true,
+              "input_tokens": 13220,
+              "output_tokens": 2694,
+              "cache_read_tokens": 3328,
+              "cache_write_tokens": 0,
+              "cost": null,
+              "requests": 3,
+              "tool_calls": 11
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "answer",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765930.9056869,
+            "latency_ms": 0.0,
+            "metadata": {
+              "summary": "LumenDynamics C (CUST-0003), an SMB Team-plan customer, canceled on 2026-07-10 after a -74.7% usage collapse (522\u2192132 se"
+            },
+            "result": null,
+            "parent_span_id": null
+          }
+        ],
+        "events": [
+          {
+            "event": "answer_ready",
+            "ts": 1787765930.9056904,
+            "payload": {
+              "summary": "LumenDynamics C (CUST-0003), an SMB Team-plan customer, canceled on 2026-07-10 after a -74.7% usage collapse (522\u2192132 se"
+            }
+          }
+        ]
+      },
+      "answer": {
+        "facts": [
+          {
+            "heading": "Account profile",
+            "content": "LumenDynamics C (CUST-0003) is an SMB customer on the Team plan. Account status is canceled. Monthly revenue is $354.31, and revenue at risk is $354.31 \u2014 the full recurring amount, consistent with the cancellation.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "Subscription & churn event",
+            "content": "On 2026-07-10 a subscription event moved the account from Team to Free (cancellation/downgrade) with a monthly revenue delta of -$210.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "Usage collapse",
+            "content": "Sessions fell from 522 (previous 4 weeks) to 132 (last 4 weeks), a -74.71% change. Daily activity shows a steady decline: active users dropped from 4 (~late May) to 0 (after early July), and daily sessions fell from ~20/day to ~2-3/day by mid-July. Intermittent errors persisted throughout the decline.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "Tickets & feedback",
+            "content": "No support tickets and no feedback records are present for CUST-0003 in the semantic layer. Satisfaction data is unavailable.",
+            "citations": [
+              "CUST-0003"
+            ]
+          }
+        ],
+        "interpretation": [
+          {
+            "heading": "Clear churn trajectory",
+            "content": "This is a textbook disengaging account. The engagement decline (-74.71%) began weeks before the July 10 cancellation \u2014 active users trended 4 \u2192 3 \u2192 2 \u2192 1 \u2192 0 from late May through early July. Cancellation was the end state of a multi-week slide, not a sudden event.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "No ticket/feedback signals captured",
+            "content": "There is no ticket or feedback history to indicate whether churn was driven by product issues, cost, or feature gaps. Recurring errors in the usage data are the only technical signal visible; their direct role is unconfirmed.",
+            "citations": [
+              "CUST-0003"
+            ]
+          }
+        ],
+        "recommendation": [
+          {
+            "heading": "Attempt a win-back (Team \u2192 Business incentive)",
+            "content": "Since LumenDynamics C (CUST-0003) churned at $354.31/mo, reach out with a downgrade-friendly or discounted re-onboarding offer (they moved to Free, so the account still holds data). Target re-engagement of the personnel who stopped logging in.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "Investigate the engagement drop root cause",
+            "content": "Ask the customer directly what drove the shutdown (cost vs. feature fit vs. errors), since no tickets or feedback explain the decline. The recurring errors in usage warrant a check for technical issues on the Team plan.",
+            "citations": [
+              "CUST-0003"
+            ]
+          },
+          {
+            "heading": "Add an early-warning trigger for similar accounts",
+            "content": "Use this profile (active users trending to 0, sessions change < -50%, cancellation risk) as a churn-prediction trigger to intervene before, not after, the drop-off \u2014 this customer was likely recoverable weeks ago.",
+            "citations": [
+              "CUST-0003"
+            ]
+          }
+        ],
+        "other_sections": [],
+        "confidence": "high",
+        "render_hint": {
+          "kind": "cards",
+          "payload": {
+            "kind": "cards",
+            "data": [
+              {
+                "label": "Status",
+                "value": "canceled"
+              },
+              {
+                "label": "Plan",
+                "value": "Team"
+              },
+              {
+                "label": "Revenue",
+                "value": "$354"
+              },
+              {
+                "label": "Sessions \u0394",
+                "value": "-75%"
+              }
+            ],
+            "spec": {}
+          }
+        },
+        "summary": "LumenDynamics C (CUST-0003), an SMB Team-plan customer, canceled on 2026-07-10 after a -74.7% usage collapse (522\u2192132 sessions) with no tickets or feedback on record."
+      }
+    },
+    {
+      "question_id": "eval-003",
+      "passed_metrics": 9,
+      "total_metrics": 11,
+      "passed": false,
+      "metrics": {
+        "routing": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "analytics",
+            "actual": "analytics"
+          }
+        },
+        "intent": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "analytics_exec",
+            "actual": "analytics_exec"
+          }
+        },
+        "entities": {
+          "passed": true,
+          "score": 0.0,
+          "detail": {
+            "found": [],
+            "missing": [],
+            "entities": {
+              "customer_ids": [],
+              "ticket_ids": [],
+              "feedback_ids": [],
+              "segment": null,
+              "plan": null,
+              "date_hints": [],
+              "customer_name_hint": null
+            }
+          }
+        },
+        "tools": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": [
+              "rank_customer_risk",
+              "calculate_revenue_at_risk"
+            ],
+            "called": [
+              "calculate_revenue_at_risk",
+              "calculate_segment_metrics",
+              "get_catalog",
+              "list_customers",
+              "rank_customer_risk",
+              "semantic_query"
+            ],
+            "missing": []
+          }
+        },
+        "retrieval": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "no retrieval expected"
+          }
+        },
+        "citations": {
+          "passed": false,
+          "score": 0.0,
+          "detail": {
+            "uncited": [
+              "Scope of exposure"
+            ]
+          }
+        },
+        "render": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": "table",
+            "actual": "table"
+          }
+        },
+        "recommendations": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected": false,
+            "actual": true
+          }
+        },
+        "prioritization": {
+          "passed": false,
+          "score": 0.0,
+          "detail": {
+            "expected": true,
+            "actual": false,
+            "headings": [
+              "uncertainty"
+            ]
+          }
+        },
+        "irrelevant": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "note": "not an irrelevant question"
+          }
+        },
+        "confidence": {
+          "passed": true,
+          "score": 1.0,
+          "detail": {
+            "expected_low": false,
+            "actual": "high"
+          }
+        }
+      },
+      "question": "Which customers are most at risk, and why?",
+      "judge": {
+        "skipped": true
+      },
+      "trace": {
+        "trace_id": "bc371ce94d59",
+        "question": "Which customers are most at risk, and why?",
+        "spans": [
+          {
+            "name": "classify",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765930.9068036,
+            "latency_ms": 0.05,
+            "metadata": {
+              "intent": "analytics_exec",
+              "entities": {
+                "customer_ids": [],
+                "ticket_ids": [],
+                "feedback_ids": [],
+                "segment": null,
+                "plan": null,
+                "date_hints": [],
+                "customer_name_hint": null
+              }
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "route",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765930.9070475,
+            "latency_ms": 0.0,
+            "metadata": {
+              "intent": "analytics_exec",
+              "routed_node": "analytics"
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "node:analytics",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765930.9093235,
+            "latency_ms": 73.8,
+            "metadata": {
+              "tools": [
+                "calculate_segment_metrics",
+                "rank_customer_risk",
+                "calculate_revenue_at_risk",
+                "list_customers",
+                "semantic_query",
+                "get_catalog"
+              ]
+            },
+            "result": {
+              "calculate_segment_metrics": {
+                "row_count": 8,
+                "sample": [
+                  {
+                    "segment": "Enterprise",
+                    "plan": null,
+                    "customers": 19,
+                    "revenue": 68438.54999999999,
+                    "revenue_customers": 18,
+                    "customers_with_tickets": 18,
+                    "ticket_count": 71,
+                    "complaint_rate": 0.5789473684210527,
+                    "average_resolution_time_hours": 17.39738562091503,
+                    "average_satisfaction_score": 3.766339869281046,
+                    "cancel_rate": 0.15789473684210525,
+                    "global_customers": 150,
+                    "global_revenue": 411764.04999999993,
+                    "global_average_resolution": 18.06329071134626,
+                    "global_average_satisfaction": 3.72619341563786,
+                    "global_churn": 29,
+                    "global_cancel_rate": 0.19333333333333333
+                  },
+                  {
+                    "segment": "Mid-Market",
+                    "plan": null,
+                    "customers": 40,
+                    "revenue": 118193.84999999999,
+                    "revenue_customers": 39,
+                    "customers_with_tickets": 40,
+                    "ticket_count": 142,
+                    "complaint_rate": 0.625,
+                    "average_resolution_time_hours": 16.270811403508777,
+                    "average_satisfaction_score": 3.5749999999999997,
+                    "cancel_rate": 0.325,
+                    "global_customers": 150,
+                    "global_revenue": 411764.04999999993,
+                    "global_average_resolution": 18.06329071134626,
+                    "global_average_satisfaction": 3.72619341563786,
+                    "global_churn": 29,
+                    "global_cancel_rate": 0.19333333333333333
+                  },
+                  {
+                    "segment": "SMB",
+                    "plan": null,
+                    "customers": 90,
+                    "revenue": 221869.5700000001,
+                    "revenue_customers": 87,
+                    "customers_with_tickets": 85,
+                    "ticket_count": 275,
+                    "complaint_rate": 0.5555555555555556,
+                    "average_resolution_time_hours": 19.012631103074142,
+                    "average_satisfaction_score": 3.786814345991561,
+                    "cancel_rate": 0.14444444444444443,
+                    "global_customers": 150,
+                    "global_revenue": 411764.04999999993,
+                    "global_average_resolution": 18.06329071134626,
+                    "global_average_satisfaction": 3.72619341563786,
+                    "global_churn": 29,
+                    "global_cancel_rate": 0.19333333333333333
+                  },
+                  {
+                    "segment": null,
+                    "plan": "Business",
+                    "customers": 39,
+                    "revenue": 81329.89000000001,
+                    "revenue_customers": 37,
+                    "customers_with_tickets": 35,
+                    "ticket_count": 138,
+                    "complaint_rate": 0.5897435897435898,
+                    "average_resolution_time_hours": 19.241171875,
+                    "average_satisfaction_score": 3.4682291666666667,
+                    "cancel_rate": 0.07692307692307693,
+                    "global_customers": 150,
+                    "global_revenue": 411764.04999999993,
+                    "global_average_resolution": 18.06329071134626,
+                    "global_average_satisfaction": 3.72619341563786,
+                    "global_churn": 29,
+                    "global_cancel_rate": 0.19333333333333333
+                  },
+                  {
+                    "segment": null,
+                    "plan": "Enterprise",
+                    "customers": 23,
+                    "revenue": 298162.18999999994,
+                    "revenue_customers": 22,
+                    "customers_with_tickets": 23,
+                    "ticket_count": 77,
+                    "complaint_rate": 0.6086956521739131,
+                    "average_resolution_time_hours": 12.595694444444442,
+                    "average_satisfaction_score": 3.705555555555555,
+                    "cancel_rate": 0.13043478260869565,
+                    "global_customers": 150,
+                    "global_revenue": 411764.04999999993,
+                    "global_average_resolution": 18.06329071134626,
+                    "global_average_satisfaction": 3.72619341563786,
+                    "global_churn": 29,
+                    "global_cancel_rate": 0.19333333333333333
+                  }
+                ]
+              },
+              "rank_customer_risk": {
+                "row_count": 10,
+                "sample": [
+                  {
+                    "customer_id": "CUST-0009",
+                    "customer_name": "LumenPartners B",
+                    "customer_segment": "SMB",
+                    "subscription_plan": "Team",
+                    "account_status": "canceled",
+                    "monthly_revenue": 679.23,
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 423,
+                    "sessions_previous_4_weeks": 1102,
+                    "sessions_change_percent": -61.61524500907441,
+                    "tickets_open": 1,
+                    "tickets_urgent": 1,
+                    "average_satisfaction_score": 4.0,
+                    "risk_score": 70.0,
+                    "risk_drivers": [
+                      "status=canceled",
+                      "sessions -62% vs prior 4wk",
+                      "1 open tickets",
+                      "1 urgent tickets"
+                    ]
+                  },
+                  {
+                    "customer_id": "CUST-0018",
+                    "customer_name": "MapleSolutions",
+                    "customer_segment": "SMB",
+                    "subscription_plan": "Team",
+                    "account_status": "canceled",
+                    "monthly_revenue": 850.24,
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 267,
+                    "sessions_previous_4_weeks": 1059,
+                    "sessions_change_percent": -74.78753541076487,
+                    "tickets_open": 1,
+                    "tickets_urgent": 1,
+                    "average_satisfaction_score": 3.6666666666666665,
+                    "risk_score": 70.0,
+                    "risk_drivers": [
+                      "status=canceled",
+                      "sessions -75% vs prior 4wk",
+                      "1 open tickets",
+                      "1 urgent tickets"
+                    ]
+                  },
+                  {
+                    "customer_id": "CUST-0012",
+                    "customer_name": "OnyxCollective A",
+                    "customer_segment": "Mid-Market",
+                    "subscription_plan": "Business",
+                    "account_status": "active",
+                    "monthly_revenue": 1181.82,
+                    "churn_proxy": false,
+                    "sessions_last_4_weeks": 2873,
+                    "sessions_previous_4_weeks": 4557,
+                    "sessions_change_percent": -36.954136493307,
+                    "tickets_open": 1,
+                    "tickets_urgent": 7,
+                    "average_satisfaction_score": 1.875,
+                    "risk_score": 57.5,
+                    "risk_drivers": [
+                      "sessions -37% vs prior 4wk",
+                      "1 open tickets",
+                      "7 urgent tickets",
+                      "low avg satisfaction (<3)"
+                    ]
+                  },
+                  {
+                    "customer_id": "CUST-0001",
+                    "customer_name": "VertexPath A",
+                    "customer_segment": "Mid-Market",
+                    "subscription_plan": "Business",
+                    "account_status": "canceled",
+                    "monthly_revenue": 3198.81,
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 428,
+                    "sessions_previous_4_weeks": 1667,
+                    "sessions_change_percent": -74.3251349730054,
+                    "tickets_open": 0,
+                    "tickets_urgent": 0,
+                    "average_satisfaction_score": 4.0,
+                    "risk_score": 55.0,
+                    "risk_drivers": [
+                      "status=canceled",
+                      "sessions -74% vs prior 4wk"
+                    ]
+                  },
+                  {
+                    "customer_id": "CUST-0003",
+                    "customer_name": "LumenDynamics C",
+                    "customer_segment": "SMB",
+                    "subscription_plan": "Team",
+                    "account_status": "canceled",
+                    "monthly_revenue": 354.31,
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 132,
+                    "sessions_previous_4_weeks": 522,
+                    "sessions_change_percent": -74.71264367816092,
+                    "tickets_open": 0,
+                    "tickets_urgent": 0,
+                    "average_satisfaction_score": null,
+                    "risk_score": 55.0,
+                    "risk_drivers": [
+                      "status=canceled",
+                      "sessions -75% vs prior 4wk",
+                      "low avg satisfaction (<3)"
+                    ]
+                  }
+                ]
+              },
+              "calculate_revenue_at_risk": {
+                "revenue_at_risk": 53387.14,
+                "at_risk_customers": 29,
+                "at_risk_with_unknown_revenue": 2,
+                "segment_filter": null,
+                "customers": [
+                  {
+                    "customer_id": "CUST-0001",
+                    "customer_name": "VertexPath A",
+                    "account_status": "canceled",
+                    "monthly_revenue": 3198.81,
+                    "risk_score": 55.0
+                  },
+                  {
+                    "customer_id": "CUST-0003",
+                    "customer_name": "LumenDynamics C",
+                    "account_status": "canceled",
+                    "monthly_revenue": 354.31,
+                    "risk_score": 55.0
+                  },
+                  {
+                    "customer_id": "CUST-0009",
+                    "customer_name": "LumenPartners B",
+                    "account_status": "canceled",
+                    "monthly_revenue": 679.23,
+                    "risk_score": 70.0
+                  },
+                  {
+                    "customer_id": "CUST-0012",
+                    "customer_name": "OnyxCollective A",
+                    "account_status": "active",
+                    "monthly_revenue": 1181.82,
+                    "risk_score": 57.5
+                  },
+                  {
+                    "customer_id": "CUST-0018",
+                    "customer_name": "MapleSolutions",
+                    "account_status": "canceled",
+                    "monthly_revenue": 850.24,
+                    "risk_score": 70.0
+                  },
+                  {
+                    "customer_id": "CUST-0020",
+                    "customer_name": "CrestForge",
+                    "account_status": "canceled",
+                    "monthly_revenue": 8998.1,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0023",
+                    "customer_name": "LumenGroup",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0026",
+                    "customer_name": "NorthWorks",
+                    "account_status": "canceled",
+                    "monthly_revenue": 872.55,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0029",
+                    "customer_name": "CrestPartners",
+                    "account_status": "canceled",
+                    "monthly_revenue": 458.67,
+                    "risk_score": 55.0
+                  },
+                  {
+                    "customer_id": "CUST-0030",
+                    "customer_name": "HarborGroup",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0037",
+                    "customer_name": "LumenLogic",
+                    "account_status": "paused",
+                    "monthly_revenue": 857.47,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0045",
+                    "customer_name": "OnyxBase",
+                    "account_status": "canceled",
+                    "monthly_revenue": 616.82,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0046",
+                    "customer_name": "CoralVentures",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0064",
+                    "customer_name": "AtlasStudio",
+                    "account_status": "canceled",
+                    "monthly_revenue": 528.58,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0074",
+                    "customer_name": "CoralDynamics",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0082",
+                    "customer_name": "FalconBase",
+                    "account_status": "paused",
+                    "monthly_revenue": 225.13,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0091",
+                    "customer_name": "OrbitBase",
+                    "account_status": "canceled",
+                    "monthly_revenue": 11681.28,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0094",
+                    "customer_name": "LumenDynamics",
+                    "account_status": "paused",
+                    "monthly_revenue": 611.14,
+                    "risk_score": 52.5
+                  },
+                  {
+                    "customer_id": "CUST-0096",
+                    "customer_name": "CoralLabs",
+                    "account_status": "paused",
+                    "monthly_revenue": 17918.14,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0097",
+                    "customer_name": "LumenSolutions",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0100",
+                    "customer_name": "NimbusForge",
+                    "account_status": "paused",
+                    "monthly_revenue": 411.14,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0101",
+                    "customer_name": "QuartzField",
+                    "account_status": "canceled",
+                    "monthly_revenue": 303.83,
+                    "risk_score": 45.0
+                  },
+                  {
+                    "customer_id": "CUST-0106",
+                    "customer_name": "DeltaGroup",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0129",
+                    "customer_name": "BrightDynamics",
+                    "account_status": "canceled",
+                    "monthly_revenue": 1065.1,
+                    "risk_score": 45.0
+                  },
+                  {
+                    "customer_id": "CUST-0137",
+                    "customer_name": "LumenCollective",
+                    "account_status": "paused",
+                    "monthly_revenue": 377.32,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0143",
+                    "customer_name": "BrightDigital",
+                    "account_status": "paused",
+                    "monthly_revenue": 549.33,
+                    "risk_score": 37.5
+                  },
+                  {
+                    "customer_id": "CUST-0144",
+                    "customer_name": "BlueGroup",
+                    "account_status": "paused",
+                    "monthly_revenue": 1320.76,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0148",
+                    "customer_name": "LumenPoint",
+                    "account_status": "canceled",
+                    "monthly_revenue": 327.37,
+                    "risk_score": 30.0
+                  },
+                  {
+                    "customer_id": "CUST-0149",
+                    "customer_name": "CedarBridge",
+                    "account_status": "canceled",
+                    "monthly_revenue": 0.0,
+                    "risk_score": 40.0
+                  }
+                ]
+              },
+              "list_customers": {
+                "row_count": 50,
+                "sample": [
+                  {
+                    "customer_id": "CUST-0001",
+                    "customer_name": "VertexPath A",
+                    "customer_segment": "Mid-Market",
+                    "country": "Singapore",
+                    "subscription_plan": "Business",
+                    "monthly_revenue": 3198.81,
+                    "account_status": "canceled",
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 428,
+                    "sessions_change_percent": -74.3251349730054,
+                    "tickets_open": 0,
+                    "tickets_urgent": 0,
+                    "average_satisfaction_score": 4.0,
+                    "risk_score": 55.0
+                  },
+                  {
+                    "customer_id": "CUST-0002",
+                    "customer_name": "AtlasDynamics B",
+                    "customer_segment": "Enterprise",
+                    "country": "France",
+                    "subscription_plan": "Enterprise",
+                    "monthly_revenue": 4667.44,
+                    "account_status": "active",
+                    "churn_proxy": false,
+                    "sessions_last_4_weeks": 1209,
+                    "sessions_change_percent": -75.0154990700558,
+                    "tickets_open": 0,
+                    "tickets_urgent": 0,
+                    "average_satisfaction_score": 3.5,
+                    "risk_score": 25.0
+                  },
+                  {
+                    "customer_id": "CUST-0003",
+                    "customer_name": "LumenDynamics C",
+                    "customer_segment": "SMB",
+                    "country": null,
+                    "subscription_plan": "Team",
+                    "monthly_revenue": 354.31,
+                    "account_status": "canceled",
+                    "churn_proxy": true,
+                    "sessions_last_4_weeks": 132,
+                    "sessions_change_percent": -74.71264367816092,
+                    "tickets_open": 0,
+                    "tickets_urgent": 0,
+                    "average_satisfaction_score": null,
+                    "risk_score": 55.0
+                  },
+                  {
+                    "customer_id": "CUST-0004",
+                    "customer_name": "QuartzVentures A",
+                    "customer_segment": "Mid-Market",
+                    "country": "Netherlands",
+                    "subscription_plan": "Business",
+                    "monthly_revenue": 1381.99,
+                    "account_status": "active",
+                    "churn_proxy": false,
+                    "sessions_last_4_weeks": 5287,
+                    "sessions_change_percent": -2.4898561416451495,
+                    "tickets_open": 2,
+                    "tickets_urgent": 1,
+                    "average_satisfaction_score": 2.375,
+                    "risk_score": 32.5
+                  },
+                  {
+                    "customer_id": "CUST-0005",
+                    "customer_name": "NimbusNetworks B",
+                    "customer_segment": "SMB",
+                    "country": "Canada",
+                    "subscription_plan": "Team",
+                    "monthly_revenue": 575.36,
+                    "account_status": "active",
+                    "churn_proxy": false,
+                    "sessions_last_4_weeks": 1668,
+                    "sessions_change_percent": 4.773869346733668,
+                    "tickets_open": 1,
+                    "tickets_urgent": 1,
+                    "average_satisfaction_score": 1.7142857142857142,
+                    "risk_score": 25.0
+                  }
+                ]
+              },
+              "semantic_query": {
+                "row_count": 7,
+                "sample": [
+                  {
+                    "category": "general_question",
+                    "value": 127
+                  },
+                  {
+                    "category": "technical_issue",
+                    "value": 91
+                  },
+                  {
+                    "category": "feature_request",
+                    "value": 77
+                  },
+                  {
+                    "category": "billing",
+                    "value": 70
+                  },
+                  {
+                    "category": "bug",
+                    "value": 49
+                  }
+                ]
+              },
+              "get_catalog": {
+                "entities": 7,
+                "dimensions": 15
+              }
+            },
+            "parent_span_id": null
+          },
+          {
+            "name": "reason",
+            "kind": "llm",
+            "status": "ok",
+            "started_at": 1787765930.9836702,
+            "latency_ms": 27481.54,
+            "metadata": {
+              "used_llm": true,
+              "input_tokens": 4793,
+              "output_tokens": 1629,
+              "cache_read_tokens": 1280,
+              "cache_write_tokens": 0,
+              "cost": null,
+              "requests": 1,
+              "tool_calls": 0
+            },
+            "result": null,
+            "parent_span_id": null
+          },
+          {
+            "name": "answer",
+            "kind": "node",
+            "status": "ok",
+            "started_at": 1787765958.4656494,
+            "latency_ms": 0.0,
+            "metadata": {
+              "summary": "LumenPartners B and MapleSolutions (risk 70) are most at risk, driven by cancellation plus \u221262%/\u221275% session drops and u"
+            },
+            "result": null,
+            "parent_span_id": null
+          }
+        ],
+        "events": [
+          {
+            "event": "answer_ready",
+            "ts": 1787765958.4656527,
+            "payload": {
+              "summary": "LumenPartners B and MapleSolutions (risk 70) are most at risk, driven by cancellation plus \u221262%/\u221275% session drops and u"
+            }
+          }
+        ]
+      },
+      "answer": {
+        "facts": [
+          {
+            "heading": "Highest-risk customers (risk \u2265 50)",
+            "content": "LumenPartners B (CUST-0009) and MapleSolutions (CUST-0018) are the two most at risk, both at risk=70. Next tier: OnyxCollective A (CUST-0012) at 57.5, then VertexPath A (CUST-0001), LumenDynamics C (CUST-0003), and CrestPartners (CUST-0029) all at 55. OrbitAnalytics B (CUST-0013) is at 50 and LumenDynamics (CUST-0094) at 52.5.",
+            "citations": [
+              "CUST-0009",
+              "CUST-0018",
+              "CUST-0012",
+              "CUST-0001",
+              "CUST-0003",
+              "CUST-0029",
+              "CUST-0094",
+              "CUST-0013"
+            ]
+          },
+          {
+            "heading": "Why they are at risk",
+            "content": "The top two (LumenPartners B, MapleSolutions) have already canceled, show severe engagement collapse (sessions \u221262% and \u221275% vs prior 4 weeks), and have open plus urgent tickets, indicating unresolved problems. LumenDynamics C and CrestPartners also combined cancellation with \u221275% session declines; VertexPath A canceled with \u221274% sessions. OnyxCollective A is the most alarming still-active case: \u221237% sessions, 7 urgent tickets, and low satisfaction (<3). OrbitAnalytics B combines \u221239% sessions, 4 urgent tickets, and low satisfaction.",
+            "citations": [
+              "CUST-0009",
+              "CUST-0018",
+              "CUST-0012",
+              "CUST-0001",
+              "CUST-0003",
+              "CUST-0029",
+              "CUST-0013"
+            ]
+          },
+          {
+            "heading": "Scope of exposure",
+            "content": "29 customers are flagged at-risk representing $53,387 of revenue at risk (plus 2 customers with unknown revenue).",
+            "citations": []
+          }
+        ],
+        "interpretation": [
+          {
+            "heading": "Pattern in the drivers",
+            "content": "Two dominant signals recur: (1) churn status (canceled or paused) and (2) a steep engagement drop of roughly \u221237% to \u221275% in sessions over the last 4 weeks. On top of these, dense urgent-ticket backlogs and low satisfaction (<3) mark customers where the problem is ongoing and unresolved rather than a one-off.",
+            "citations": [
+              "CUST-0009",
+              "CUST-0018",
+              "CUST-0012",
+              "CUST-0013"
+            ]
+          }
+        ],
+        "recommendation": [
+          {
+            "heading": "Prioritized actions",
+            "content": "1) Rescue the two risk=70 accounts \u2014 LumenPartners B (CUST-0009) and MapleSolutions (CUST-0018): both already canceled with severe session drops and unresolved urgent tickets; attempt immediate win-back with a named CSM and resolution of open tickets before churn finalizes.\n2) Defend the still-active high-value risk, OnyxCollective A (CUST-0012, risk 57.5): 7 urgent tickets + low satisfaction while active \u2014 treat as highest-priority save since there is a live path to recovery.\n3) For canceled risk=55 accounts (CUST-0001, CUST-0003, CUST-0029): confirm whether churn is final; if not, execute win-back given steep engagement loss.\n4) Address the shared root cause across the top tier: resolve urgent-ticket backlogs and restore engagement for any customer with sessions down >50%.\n5) Watch LumenDynamics (CUST-0094, paused) and OrbitAnalytics B (CUST-0013) \u2014 at risk but still recoverable with intervention.",
+            "citations": [
+              "CUST-0009",
+              "CUST-0018",
+              "CUST-0012",
+              "CUST-0001",
+              "CUST-0003",
+              "CUST-0029",
+              "CUST-0094",
+              "CUST-0013"
+            ]
+          }
+        ],
+        "other_sections": [
+          {
+            "heading": "Uncertainty",
+            "content": "Several at-risk accounts (e.g. VertexPath A CUST-0001, LumenDynamics C CUST-0003) are already marked canceled, so 'risk' partly reflects lost revenue rather than preventable churn; win-back likelihood is unverified. Revenue is unknown (NULL) for two accounts (e.g. CUST-0013, CUST-0014), so exposure there may be understated. Satisfaction and resolution data are absent for unresolved tickets.",
+            "citations": [
+              "CUST-0001",
+              "CUST-0003",
+              "CUST-0013"
+            ]
+          }
+        ],
+        "confidence": "high",
+        "render_hint": {
+          "kind": "table",
+          "payload": {
+            "kind": "table",
+            "data": [
+              {
+                "customer_id": "CUST-0009",
+                "risk_score": 70.0,
+                "status": "canceled",
+                "drivers": "status=canceled, sessions -62% vs prior 4wk, 1 open tickets, 1 urgent tickets"
+              },
+              {
+                "customer_id": "CUST-0018",
+                "risk_score": 70.0,
+                "status": "canceled",
+                "drivers": "status=canceled, sessions -75% vs prior 4wk, 1 open tickets, 1 urgent tickets"
+              },
+              {
+                "customer_id": "CUST-0012",
+                "risk_score": 57.5,
+                "status": "active",
+                "drivers": "sessions -37% vs prior 4wk, 1 open tickets, 7 urgent tickets, low avg satisfacti"
+              },
+              {
+                "customer_id": "CUST-0001",
+                "risk_score": 55.0,
+                "status": "canceled",
+                "drivers": "status=canceled, sessions -74% vs prior 4wk"
+              },
+              {
+                "customer_id": "CUST-0003",
+                "risk_score": 55.0,
+                "status": "canceled",
+                "drivers": "status=canceled, sessions -75% vs prior 4wk, low avg satisfaction (<3)"
+              },
+              {
+                "customer_id": "CUST-0029",
+                "risk_score": 55.0,
+                "status": "canceled",
+                "drivers": "status=canceled, sessions -75% vs prior 4wk"
+              },
+              {
+                "customer_id": "CUST-0094",
+                "risk_score": 52.5,
+                "status": "paused",
+                "drivers": "status=paused, 1 open tickets, 2 urgent tickets"
+              },
+              {
+                "customer_id": "CUST-0013",
+                "risk_score": 50.0,
+                "status": "active",
+                "drivers": "sessions -39% vs prior 4wk, 4 urgent tickets, low avg satisfaction (<3)"
+              },
+              {
+                "customer_id": "CUST-0101",
+                "risk_score": 45.0,
+                "status": "canceled",
+                "drivers": "status=canceled, 2 urgent tickets"
+              },
+              {
+                "customer_id": "CUST-0129",
+                "risk_score": 45.0,
+                "status": "canceled",
+                "drivers": "status=canceled, 2 open tickets"
+              }
+            ],
+            "spec": {
+              "title": "Customers by risk score"
+            }
+          }
+        },
+        "summary": "LumenPartners B and MapleSolutions (risk 70) are most at risk, driven by cancellation plus \u221262%/\u221275% session drops and urgent tickets; OnyxCollective A (57.5) is the key still-active save with 7 urgent tickets and low satisfaction."
+      }
+    }
+  ]
+}

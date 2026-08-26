@@ -1,0 +1,406 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Agent Workspace - CustIntel AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#283044",
+                      "outline-variant": "#464554",
+                      "surface-bright": "#31394d",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "surface": "#0b1326",
+                      "error-container": "#93000a",
+                      "on-secondary-container": "#a7b6cc",
+                      "surface-container-lowest": "#060e20",
+                      "secondary-container": "#39485a",
+                      "on-secondary-fixed": "#0d1c2d",
+                      "on-surface-variant": "#c7c4d7",
+                      "surface-variant": "#2d3449",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "tertiary-fixed": "#ffdcc5",
+                      "surface-container-high": "#222a3d",
+                      "on-primary": "#1000a9",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#dae2fd",
+                      "surface-container": "#171f33",
+                      "primary-fixed": "#e1e0ff",
+                      "surface-container-low": "#131b2e",
+                      "tertiary": "#ffb783",
+                      "on-tertiary-fixed": "#301400",
+                      "secondary-fixed": "#d4e4fa",
+                      "inverse-surface": "#dae2fd",
+                      "primary-container": "#8083ff",
+                      "surface-container-highest": "#2d3449",
+                      "on-secondary-fixed-variant": "#39485a",
+                      "primary": "#c0c1ff",
+                      "secondary-fixed-dim": "#b9c8de",
+                      "outline": "#908fa0",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#c0c1ff",
+                      "inverse-primary": "#494bd6",
+                      "surface-dim": "#0b1326",
+                      "on-tertiary-container": "#452000",
+                      "on-secondary": "#233143",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "secondary": "#b9c8de",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-primary-fixed": "#07006c",
+                      "tertiary-container": "#d97721",
+                      "on-primary-container": "#0d0096",
+                      "on-background": "#dae2fd",
+                      "on-tertiary": "#4f2500",
+                      "background": "#0b1326"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "trace-panel-width": "400px",
+                      "container-padding": "24px",
+                      "gutter": "16px",
+                      "sidebar-width": "280px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "code-md": ["JetBrains Mono"],
+                      "label-sm": ["Inter"],
+                      "label-xs": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "code-md": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "label-xs": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for technical aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449; /* surface-variant */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #464554; /* outline-variant */
+        }
+        
+        .pulse-border {
+            animation: borderPulse 2s infinite;
+        }
+        @keyframes borderPulse {
+            0% { border-color: #39485a; } /* secondary-container */
+            50% { border-color: #8083ff; } /* primary-container */
+            100% { border-color: #39485a; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant flex justify-between items-center w-full px-container-padding h-16 shrink-0 z-10 relative">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm font-black text-on-surface dark:text-on-surface tracking-tight">Agent Workspace</span>
+
+</div>
+
+</header>
+<!-- Main Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Left) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant dark:border-outline-variant flex flex-col h-full w-sidebar-width shrink-0 hidden md:flex">
+<!-- Header/Profile Area -->
+
+<!-- Primary Nav -->
+<div class="p-4 flex flex-col gap-1 flex-1 overflow-y-auto">
+<button class="w-full text-left flex items-center gap-3 px-3 py-2 bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-xl cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add_comment</span>
+<span class="font-label-sm text-label-sm font-semibold">New Chat</span>
+</button>
+
+
+
+<!-- Recent Sessions (Contextual Addition based on prompt) -->
+<div class="mt-6 mb-2">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider px-3">Recent Sessions</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<a class="px-3 py-1.5 text-on-surface hover:bg-surface-variant rounded transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="font-label-sm text-[13px] truncate">Project Alpha Debugging</span>
+</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-variant rounded transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="font-label-sm text-[13px] truncate">Market Research Analysis</span>
+</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-variant rounded transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="font-label-sm text-[13px] truncate">Code Refactoring</span>
+</a>
+</div>
+</div>
+<!-- Footer Area -->
+
+</aside>
+<!-- Center Workspace (Chat) -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-container-lowest relative">
+<!-- Chat Thread Area -->
+<div class="flex-1 overflow-y-auto p-container-padding flex flex-col gap-6">
+<!-- System Prompt Context Chip -->
+<div class="flex justify-center mb-4">
+<div class="bg-surface-container border border-outline-variant px-3 py-1 rounded flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary pulse-border"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Agent Context: Code Review Mode Active</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-4xl mx-auto w-full">
+<div class="w-8 h-8 rounded shrink-0 bg-surface-variant flex items-center justify-center border border-outline-variant mt-1">
+<span class="material-symbols-outlined text-[18px] text-on-surface">person</span>
+</div>
+<div class="flex-1 pt-1">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1 flex items-center gap-2">
+<span class="">User</span>
+<span class="text-outline font-label-xs text-[10px]">10:42 AM</span>
+</div>
+<div class="text-on-surface font-body-lg text-body-lg">
+                            Can you review the authentication flow in `auth_service.py`? I suspect there's a vulnerability with how we handle token expiration. Also, check if we need to rerank the retrieval results for the context.
+                        </div>
+</div>
+</div>
+<!-- Agent Message -->
+<div class="flex gap-4 max-w-4xl mx-auto w-full relative">
+<!-- Vertical thread line indicator -->
+<div class="absolute left-[15px] top-[40px] bottom-[-20px] w-[2px] bg-surface-variant"></div>
+<div class="w-8 h-8 rounded shrink-0 bg-primary/20 flex items-center justify-center border border-primary mt-1 z-10 relative">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">smart_toy</span>
+</div>
+<div class="flex-1 pt-1 pb-4">
+<div class="font-label-sm text-label-sm text-primary mb-1 flex items-center gap-2">
+<span class="">CustIntel Agent</span>
+<span class="text-outline font-label-xs text-[10px]">10:42 AM</span>
+<div class="bg-surface-variant px-1.5 py-0.5 rounded text-[10px] text-on-surface border border-outline-variant ml-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">timer</span>
+                                2.4s
+                            </div>
+</div>
+<div class="text-on-surface font-body-md text-body-md space-y-4">
+<p class="">I've analyzed `auth_service.py`. You are correct to suspect a vulnerability. The current implementation does not properly validate the `exp` (expiration) claim on the JWT during the refresh process, allowing potentially expired tokens to be used to request a new session.</p>
+<!-- Tool Call Summary inside Chat -->
+<div class="bg-surface-container border border-outline-variant rounded p-3 my-3">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-2">
+<span class="material-symbols-outlined text-[16px]">build</span>
+<span class="">Tool Execution: AST Parser</span>
+</div>
+<div class="font-code-md text-code-md text-secondary bg-surface-container-lowest p-2 rounded border border-surface-variant">
+                                    Parsed AST for auth_service.py... located verify_token() at line 142.
+                                </div>
+</div>
+<p class="">Here is the suggested fix implementing proper claim validation before issuing a refresh token:</p>
+<!-- Code Block -->
+<div class="rounded-lg overflow-hidden border border-outline-variant bg-[#0d1117]">
+<div class="flex justify-between items-center px-4 py-2 bg-[#161b22] border-b border-outline-variant">
+<span class="font-label-xs text-label-xs text-on-surface-variant">python</span>
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span class="font-label-xs text-label-xs">Copy</span>
+</button>
+</div>
+<pre class="p-4 overflow-x-auto"><code class="font-code-md text-code-md"><span class="text-[#ff7b72]">def</span> <span class="text-[#d2a8ff]">refresh_session</span>(refresh_token: <span class="text-[#79c0ff]">str</span>) -&gt; <span class="text-[#79c0ff]">dict</span>:
+    <span class="text-[#8b949e]"># Previous vulnerable code:</span>
+    <span class="text-[#8b949e]"># decoded = jwt.decode(refresh_token, SECRET, options={"verify_exp": False})</span>
+    
+    <span class="text-[#ff7b72]">try</span>:
+        <span class="text-[#8b949e]"># Fix: Enforce expiration verification</span>
+        decoded <span class="text-[#ff7b72]">=</span> jwt.decode(refresh_token, SECRET, algorithms<span class="text-[#ff7b72]">=</span>[<span class="text-[#a5d6ff]">"HS256"</span>])
+        <span class="text-[#ff7b72]">return</span> generate_new_tokens(decoded[<span class="text-[#a5d6ff]">"sub"</span>])
+    <span class="text-[#ff7b72]">except</span> jwt.ExpiredSignatureError:
+        <span class="text-[#ff7b72]">raise</span> AuthException(<span class="text-[#a5d6ff]">"Refresh token has expired"</span>)
+    <span class="text-[#ff7b72]">except</span> jwt.InvalidTokenError:
+        <span class="text-[#ff7b72]">raise</span> AuthException(<span class="text-[#a5d6ff]">"Invalid token"</span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for scrolling -->
+<div class="h-8"></div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-lowest border-t border-outline-variant shrink-0 relative z-20">
+<div class="max-w-4xl mx-auto">
+<!-- Settings Toggle Row -->
+<div class="flex items-center gap-6 mb-3 px-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative inline-block w-8 h-4 rounded-full bg-surface-variant border border-outline-variant transition-colors group-hover:border-primary/50">
+<input checked="" class="peer sr-only" type="checkbox">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-on-surface-variant rounded-full transition-transform peer-checked:translate-x-4 peer-checked:bg-primary"></div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant select-none">Rerank Retrieval</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative inline-block w-8 h-4 rounded-full bg-surface-variant border border-outline-variant transition-colors group-hover:border-primary/50">
+<input class="peer sr-only" type="checkbox">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-on-surface-variant rounded-full transition-transform peer-checked:translate-x-4 peer-checked:bg-primary"></div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant select-none">Moderation Pre-check</span>
+</label>
+</div>
+<!-- Command Bar Input -->
+<div class="relative rounded-lg bg-[#020617] border border-outline-variant focus-within:border-primary focus-within:shadow-[inset_0_1px_3px_rgba(0,0,0,0.5),0_0_0_1px_rgba(192,193,255,0.2)] transition-all flex flex-col">
+<textarea class="w-full bg-transparent border-none text-on-surface placeholder:text-on-surface-variant/50 focus:ring-0 resize-none font-body-md text-body-md p-4" placeholder="Message agent or type '/' for commands..." rows="2" style="min-height: 80px;"></textarea>
+<div class="flex justify-between items-center p-2 border-t border-outline-variant/50 bg-surface-container/30">
+<div class="flex gap-1">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded transition-colors" title="Attach File">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded transition-colors" title="Select Model">
+<span class="material-symbols-outlined text-[20px]">psychology_alt</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:bg-primary-fixed transition-colors">
+<span class="">Send</span>
+<span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</div>
+</div>
+<div class="text-center mt-2">
+<span class="font-label-xs text-label-xs text-outline">Agents can make mistakes. Verify critical code.</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Sidebar (Trace Panel) -->
+<aside class="bg-surface-container dark:bg-surface-container border-l border-outline-variant dark:border-outline-variant w-trace-panel-width shrink-0 hidden lg:flex flex-col h-full shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)] z-20">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">terminal</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Agent Trace</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded font-label-xs text-label-xs border border-outline-variant">Live</span>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-3 font-code-md text-code-md">
+<!-- Trace Item 1: Init -->
+<div class="flex gap-3 relative group">
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">play_arrow</span>
+</div>
+<div class="w-px h-full bg-outline-variant absolute top-5 left-[9px]"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="flex justify-between items-start mb-1 cursor-pointer">
+<span class="text-on-surface-variant">Initialize Request</span>
+<span class="text-outline text-[11px]">0.01s</span>
+</div>
+<div class="text-outline text-[11px]">Model: GPT-4o-Turbo • Context: 14k tokens</div>
+</div>
+</div>
+<!-- Trace Item 2: Tool Call -->
+<div class="flex gap-3 relative group">
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-primary/20 border border-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-primary">search</span>
+</div>
+<div class="w-px h-full bg-outline-variant absolute top-5 left-[9px]"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="flex justify-between items-start mb-1 cursor-pointer hover:text-primary transition-colors">
+<span class="text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+                                Searching Knowledge Base...
+                            </span>
+<span class="text-outline text-[11px]">0.84s</span>
+</div>
+<!-- Expanded Details -->
+<div class="mt-2 bg-[#060e20] border border-outline-variant rounded p-2 text-[11px] font-code-md text-secondary overflow-x-auto">
+<div class=""><span class="text-outline">Query:</span> "auth_service.py JWT validation refresh flow"</div>
+<div class="mt-1 flex items-center gap-2">
+<span class="px-1.5 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px]">Confidence: 94%</span>
+<span class="px-1.5 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px]">Vectors Retrieved: 3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trace Item 3: Rerank (Based on toggle) -->
+<div class="flex gap-3 relative group">
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">sort</span>
+</div>
+<div class="w-px h-full bg-outline-variant absolute top-5 left-[9px]"></div>
+</div>
+<div class="flex-1 pb-4">
+<div class="flex justify-between items-start mb-1 cursor-pointer">
+<span class="text-on-surface-variant">Cross-Encoder Reranking</span>
+<span class="text-outline text-[11px]">0.32s</span>
+</div>
+<div class="text-outline text-[11px]">Promoted Context Chunk #3 (auth_service.py:120-160) to rank 1.</div>
+</div>
+</div>
+<!-- Trace Item 4: Generation -->
+<div class="flex gap-3 relative group">
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-tertiary-container/30 border border-tertiary flex items-center justify-center z-10 relative">
+<!-- Pulsing effect for active generation -->
+<div class="absolute inset-0 rounded-full border border-tertiary animate-ping opacity-50"></div>
+<span class="material-symbols-outlined text-[12px] text-tertiary">bolt</span>
+</div>
+<!-- No bottom line for last item -->
+</div>
+<div class="flex-1 pb-4">
+<div class="flex justify-between items-start mb-1">
+<span class="text-tertiary font-medium">Streaming Response...</span>
+<span class="text-outline text-[11px] animate-pulse">1.2s+</span>
+</div>
+<div class="text-outline text-[11px] flex flex-col gap-1">
+<span class="">Tokens generated: 142</span>
+<span class="">Speed: 84 tok/s</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Stats -->
+<div class="p-3 border-t border-outline-variant bg-surface-container-high flex justify-between items-center">
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container-lowest border border-outline-variant rounded font-label-xs text-label-xs text-on-surface-variant">Total: $0.0014</span>
+<span class="px-2 py-1 bg-surface-container-lowest border border-outline-variant rounded font-label-xs text-label-xs text-on-surface-variant">Latency: 2.4s</span>
+</div>
+</div>
+</aside>
+</div>
+
+
+</body></html>

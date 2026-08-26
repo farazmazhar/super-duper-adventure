@@ -1,0 +1,27 @@
+# AI Customer Intelligence Agent — dependencies
+# Pinned to the versions used during development (.venv).
+# Install: pip install -r requirements.txt
+
+# --- Data layer (cleansing + embeddings + MCP tools) ---
+duckdb>=1.5.5
+
+# --- LLM / embeddings (OpenAI-compatible client → OpenRouter) ---
+openai>=3.3.1
+httpx>=0.28.1
+
+# --- Agent framework ---
+pydantic-ai>=2.35.0
+langgraph>=1.2.11
+langchain-core>=1.6.0
+
+# --- MCP server (tool surface) ---
+mcp>=2.1.1
+
+# --- Data validation / settings ---
+pydantic>=2.13.4
+pydantic-settings>=2.15.0
+
+# --- Frontend (Starlette + Jinja2 + uvicorn) ---
+starlette>=1.6.0
+jinja2>=3.1.6
+uvicorn>=0.52.4

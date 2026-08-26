@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Custom
+_assignment/
+.commandcode/
+
+# Internal working docs (curated public docs generated at the end)
+docs/internal/

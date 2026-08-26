@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin — Customer Intelligence{% endblock %}
+{% block content %}
+<h1>System status</h1>
+<div class="card"><h3>Quality report (App 1)</h3><div id="admin-quality"></div></div>
+<div class="grid-2">
+  <div class="card"><h3>Embedding metadata (App 2)</h3><div id="admin-embedding"></div></div>
+  <div class="card"><h3>Agent state</h3><div id="admin-agent"></div></div>
+</div>
+<div class="card"><h3>Tables</h3><div id="admin-tables"></div></div>
+{% endblock %}
+{% block head %}
+<script>
+  window.PAGE = "admin";
+</script>
+{% endblock %}

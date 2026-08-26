@@ -1,0 +1,24 @@
+datetime,event
+2026-08-26T14:22:16+05:00,start
+2026-08-26T15:12:50+05:00,app1: env setup + pipeline.sql + run.py + tests (22 passed)
+2026-08-26T15:21:30+05:00,shared config: pydantic-settings + .env/.env.example + config tests (4 passed)
+2026-08-26T15:26:18+05:00,app1: explicit main.* schema qualification (D9)
+2026-08-26T15:51:32+05:00,app1: expanded abbreviations to full names (staging/aggregate/dimension/average/global etc.) + rebuilt DB + docs
+2026-08-26T16:02:44+05:00,app1: made pipeline data-agnostic (pipeline_rules catalogue + generic descriptions + derived trend windows)
+2026-08-26T16:09:49+05:00,app1: rating >5 normalized to 5-point scale (÷2) instead of NULL + config test isolation fix
+2026-08-26T16:42:35+05:00,app4 mcp: tools.py (17 shared tools) + sql_tools.py (read-only confinement) + server.py (mcp 2.1.1 MCPServer
+2026-08-26T16:51:56+05:00,break
+2026-08-26T19:09:59+05:00,resume
+2026-08-26T19:12:00+05:00,renamed OPENROUTER_* -> OPENAI_* (env + settings attrs) since the OpenAI SDK is used; any OpenAI-compatible API pluggable; .env/.env.example/config/tests updated; 84 tests pass
+2026-08-26T19:25:31+05:00,app4 sync to updated spec: retrieval.py (runtime RAG owns EmbeddingClient
+2026-08-26T20:05:41+05:00,app3 agent: constants/ (prompts+lexicons+routing)
+2026-08-26T20:20:21+05:00,app4 semantic layer: apps/mcp/semantic.py (catalog: 7 entities/8 metrics/13 dims; validation rejects unknown; parameterized SQL; read-only) replaces run_sql_query (sql_tools.py removed); server wired; guardrails registry + agent general node updated; 21 semantic tests; 167 pass
+2026-08-26T20:34:13+05:00,FE moderation+rerank wiring verified end-to-end (toggles -> evaluate_input(moderation_enabled) + retrieve_kwargs -> retrieve_sources(rerank_enabled)); added test_chat_wiring.py (3 tests); 172 pass
+2026-08-26T20:47:00+05:00,agent beautification: render.py builds structured render_hint payloads (trend->line chart
+2026-08-26T21:39:53+05:00,FE redesign: Streamlit -> Starlette+Jinja2+vanilla JS (server.py
+2026-08-26T21:45:00+05:00,generality pass: config-driven categorical pivots (ticket_category/priority/status
+2026-08-26T21:58:04+05:00,agent semantic-tool binding: build_reason_agent(mcp=...) binds semantic_query + get_catalog as @agent.tool via McpClient (no cross-app import); fixed str.format brace escaping in SYSTEM_PROMPT_TEMPLATE; CLI+FE pass mcp; LLM now generates+executes semantic queries (verified: customers by country); 4 tool tests; 204 pass
+2026-08-26T22:05:06+05:00,human-friendly names in answers: rank_customer_risk formatter now includes customer_name; _format_context renders revenue-at-risk per-customer names; system prompt rule 9 (name first
+2026-08-26T22:15:00+05:00,online-only pass: removed degraded/offline/fallback framing from config + all docs (embedding fallback
+2026-08-26T22:40:00+05:00,app4 dev rationale doc (app4-dev.md): reviewed tools/retrieval/sql_tools/server + 46 tests; documented risk-score heuristic
+2026-08-26T23:03:04+05:00,done

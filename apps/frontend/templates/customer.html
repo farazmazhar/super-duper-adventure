@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Customer — Customer Intelligence{% endblock %}
+{% block content %}
+<h1>Customer drill-down</h1>
+<form id="customer-form" class="customer-search">
+  <input id="customer-id" type="text" value="{{ customer_id }}" placeholder="CUST-0001">
+  <button type="submit" class="btn primary">Load</button>
+</form>
+<div id="customer-profile" class="kpi-row"></div>
+<div class="grid-2">
+  <div class="card"><h3>Recent tickets</h3><div id="customer-tickets"></div></div>
+  <div class="card"><h3>Feedback</h3><div id="customer-feedback"></div></div>
+</div>
+<div class="card"><h3>Usage trend</h3><div id="customer-usage"></div></div>
+{% endblock %}
+{% block head %}
+<script>
+  window.PAGE = "customer";
+</script>
+{% endblock %}

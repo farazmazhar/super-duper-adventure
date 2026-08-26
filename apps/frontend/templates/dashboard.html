@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Customer Intelligence{% endblock %}
+{% block content %}
+<h1>Executive dashboard</h1>
+<div id="kpis" class="kpi-row"></div>
+<div class="grid-2">
+  <div class="card"><h3>Feedback themes</h3><div id="chart-themes"></div></div>
+  <div class="card"><h3>Tickets by category</h3><div id="chart-tickets"></div></div>
+</div>
+<div class="card"><h3>At-risk customers (paused)</h3><div id="table-risk"></div></div>
+{% endblock %}
+{% block head %}
+<script>
+  window.PAGE = "dashboard";
+</script>
+{% endblock %}

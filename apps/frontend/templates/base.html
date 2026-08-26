@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Customer Intelligence{% endblock %}</title>
+  <link rel="stylesheet" href="/static/app.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <nav class="topnav">
+    <span class="brand">🧠 Customer Intelligence</span>
+    <a href="/" class="{{ 'active' if active == 'chat' else '' }}">💬 Chat</a>
+    <a href="/dashboard" class="{{ 'active' if active == 'dashboard' else '' }}">📊 Dashboard</a>
+    <a href="/customer/CUST-0001" class="{{ 'active' if active == 'customer' else '' }}">👤 Customer</a>
+    <a href="/admin" class="{{ 'active' if active == 'admin' else '' }}">⚙️ Admin</a>
+  </nav>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
