@@ -35,6 +35,14 @@ python run.py eval                # writes data/eval/report.{json,md}
 python run.py all
 ```
 
+**Watch the demo:** a short walkthrough of the web UI (chat answer with citations +
+chart, Behind-the-scenes trace, exec dashboard).
+
+<video controls poster="demo/demo-poster.jpg" preload="metadata" width="100%">
+  <source src="demo/demo.webm" type="video/webm">
+  Your browser doesn't support embedded video — <a href="demo/demo.webm">download demo.webm</a>.
+</video>
+
 **Test the agent without the UI** (same graph + MCP + guardrails, terminal output):
 
 ```bash
